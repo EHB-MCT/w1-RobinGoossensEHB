@@ -6,14 +6,14 @@
 const w = 800;
 const h = 800;
 
-let x = w/2;
-let y = h/2;
-let xSpeed = 5;
-let ySpeed = 3;
+
+let loc,acc; 
 
 function setup() {
     createCanvas(w, h);
     background(200);
+    loc = createVector(w/2, h/2);
+    acc = createVector(5,3);
 }
 
 function draw() {
@@ -21,21 +21,21 @@ function draw() {
 
     //Update
     edges();
-    x += xSpeed;
-    y += ySpeed;
+loc.x +=acc.x;
+loc.y +=acc.y;
 
     //Draw
     stroke(0);
     fill(175);
-    circle(x,y,50);
+    circle(loc.x,loc.y,50);
 }
 
 function edges() {
-    if ((x > w) || (x < 0)) {
-        xSpeed = xSpeed * -1;
+    if ((loc.x > w) || (loc.x < 0)) {
+        acc.x = acc.x * -1;
       }
-      if ((y > h) || (y < 0)) {
-        ySpeed = ySpeed * -1;
+      if ((loc.y > h) || (loc.y < 0)) {
+        acc.y = acc.y * -1;
       }
     
 }
